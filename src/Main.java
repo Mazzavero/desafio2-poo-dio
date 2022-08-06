@@ -1,4 +1,6 @@
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
@@ -17,8 +19,8 @@ public class Main {
         curso2.setDescricao("descricao curso js");
         curso2.setCargaHoraria(4);
 
-        System.out.println(curso1);
-        System.out.println(curso2);
+        //System.out.println(curso1);
+        //System.out.println(curso2);
 
         Mentoria mentoria1 = new Mentoria();
 
@@ -26,7 +28,44 @@ public class Main {
         mentoria1.setDescricao("descricao mentoria java");
         mentoria1.setData(LocalDate.now());
 
-        System.out.println(mentoria1);
+        //System.out.println(mentoria1);
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descricao Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria1);
+
+        Dev devVeronica = new Dev();
+        devVeronica.setNome("Veronica");
+        devVeronica.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscrito Veronica" + devVeronica.getContudosInscritos());
+        devVeronica.progredir();
+        devVeronica.progredir();
+        System.out.println("---");
+
+        System.out.println("Conteúdos concluidos Veronica" + devVeronica.getConteudosConcluidos());
+        System.out.println("Conteúdos inscrito Veronica" + devVeronica.getContudosInscritos());
+        System.out.println("XP:"+ devVeronica.calcularTotalXp());
+
+        System.out.println("-----------");
+
+        Dev devJoao = new Dev();
+        devJoao.setNome("João");
+        devJoao.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscrito Joao" + devJoao.getContudosInscritos());
+        devJoao.progredir();
+        devVeronica.progredir();
+        devVeronica.progredir();
+        System.out.println("---");
+
+        System.out.println("Conteúdos concluidos Joao" + devJoao.getConteudosConcluidos());
+        System.out.println("Conteúdos inscrito Joao" + devJoao.getContudosInscritos());
+        System.out.println("XP:"+ devJoao.calcularTotalXp());
+
+
+
 
 
     }
